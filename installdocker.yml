@@ -1,7 +1,15 @@
 ---
 - hosts: demo
-  #user: ansible
-  #connection: ssh
+  user: ansible
+  vars:
+    authorized_key_list:
+      - name: root
+        authorized_keys:
+         - key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+           state: present
+  roles:
+    - { role: GROG.authorized-key }
+  connection: ssh
   become: yes
   tasks:
     - name: Install aptitude
