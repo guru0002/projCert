@@ -1,7 +1,7 @@
 ---
 - hosts: demo
-  user: ansible
-  connection: ssh
+  #user: ansible
+  #connection: ssh
   become: yes
   tasks:
     - name: Install aptitude
