@@ -16,6 +16,6 @@ RUN rm -rf /var/www/html/*
 COPY website /var/www/html/
 
 #Open port 80
-EXPOSE 80
+EXPOSE 8090
 #Start Apache service
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
