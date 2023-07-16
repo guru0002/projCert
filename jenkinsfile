@@ -42,10 +42,10 @@ pipeline
             }
             steps 
             {
-                sh "if [ ! -d '/home/jenkins/jenkins_slave/workspace/Certification' ]; then git clone https://github.com/guru0002/projCert /home/jenkins/jenkins_slave/workspace/Certification ; fi"
-                sh "cd /home/jenkins/jenkins_slave/workspace/Certification && sudo git checkout master"
+                sh "if [ ! -d '/var/www/html' ]; then git clone https://github.com/guru0002/projCert /var/www/html ; fi"
+                sh "cd /var/www/html && sudo git checkout master"
                 sh "sudo docker rm -f webapp || true"
-                sh "cd /home/jenkins/jenkins_slave/workspace/Certification && sudo docker build -t test ."
+                sh "cd /var/www/html && sudo docker build -t test ."
                 sh "sudo docker run -it -d --name webapp -p 8090:80 test"
             }
         }
